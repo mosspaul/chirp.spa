@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+<div>
+    @for (connection of connections; track connection.id) {
+        <div class="card">{{connection.name}}</div>
+    }
+</div>

@@ -1,1 +1,33 @@
-<p>sign-up works!</p>
+<div class="main">
+    <div class="signUp">
+        <h2>Become a <strong id="brand">Chirp</strong> Member Today</h2>
+        <form #form="ngForm" id="signInForm">
+
+            <div class="sep"></div>
+            <input autocomplete="off" type="text" [(ngModel)]="credentials.first_name" name="firstName" placeholder="First Name">
+            <div class="sep"></div>
+
+            <input autocomplete="off" type="text" [(ngModel)]="credentials.last_name" name="lastName" placeholder="Last Name">
+            <div class="sep"></div>
+
+            <input autocomplete="off" type="text" [(ngModel)]="credentials.email" name="email" placeholder="Email">
+            <div class="sep"></div>
+
+            <input autocomplete="off" type="text" [(ngModel)]="credentials.username" name="username" placeholder="Username">
+            <div class="sep"></div>
+
+            <div class="input-container">
+                <input autocomplete="off" [type]="showPassword ? 'text' : 'password'" [(ngModel)]="credentials.password"
+                    name="password" placeholder="Password"/>
+
+                <button class="toggle-btn" type="button" (click)="togglePassword()">👁</button>
+            </div>
+
+            <div class="buttonArea">
+                <button class="signUpButton" type="button" (click)="signUp()">Create Account</button>
+                <div class="sep"></div>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,5 +1,27 @@
-<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-  <input [(ngModel)]="credentials.username" name="username" required placeholder="Username" />
-  <input [(ngModel)]="credentials.password" name="password" type="password" required placeholder="Password" />
-  <button type="submit" [disabled]="!loginForm.valid">Sign in</button>
-</form>
+<div class="main">
+    <div class="login">
+      <div class="text">
+        <p>Sign in to view your finances, input username and password.</p>
+      </div>
+        
+        <form #form="ngForm" id="loginForm">
+
+            <div class="sep"></div>
+            <input autocomplete="off" type="text" [(ngModel)]="credentials.username" name="username" placeholder="Username">
+            <div class="sep"></div>
+            <div class="input-container">
+                <input autocomplete="off" [type]="showPassword ? 'text' : 'password'" [(ngModel)]="credentials.password"
+                    name="password" placeholder="Password"/>
+
+                <button class="toggle-btn" type="button" (click)="togglePassword()">👁</button>
+            </div>
+
+            <div class="buttonArea">
+                <button class="loginButton" type="button" (click)="login()">Sign In</button>
+                <div class="sep"></div>
+                <p>Not a member?  <a routerLink="/signup">Create Account</a></p>
+            </div>
+
+        </form>
+    </div>
+</div>
