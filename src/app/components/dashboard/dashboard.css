@@ -1,4 +1,16 @@
-.class {
-    border: 1px whitesmoke;
+.page {
+    padding: 1rem;
+}
+
+.card {
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
     color: whitesmoke;
+    width: 15vw;
+    height: 10vw;
+    padding: 5px;
+}
+
+h2 {
+    font-size: 30px;
 }

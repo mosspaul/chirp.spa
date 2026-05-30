@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FinanceService } from '../../services/finance-service';
 import { catchError } from 'rxjs';
 import { Connection } from '../../models/finance-models/connection';
@@ -11,7 +11,7 @@ import { Connection } from '../../models/finance-models/connection';
 })
 export class Dashboard {
   financeService = inject(FinanceService);
-  connections: Connection[] = [];
+  connections = signal<Connection[]>([]);
 
   ngOnInit() {
     this.getAll();
@@ -23,8 +23,7 @@ export class Dashboard {
         throw error;
       }))
         .subscribe(conns => {
-          this.connections = conns
-          console.log(this.connections);
+          this.connections.set(conns);
         });
     }
 }

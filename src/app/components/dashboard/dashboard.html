@@ -1,5 +1,10 @@
-<div>
-    @for (connection of connections; track connection.id) {
-        <div class="card">{{connection.name}}</div>
+<div class="page">
+    <div>
+        <h2>Dashboard</h2>
+    </div>
+    @for (connection of connections(); track connection.id) {
+        <div class="card">
+            <h3><a [href]="connection.url">{{connection.name}}</a></h3>
+        </div>
     }
 </div>
