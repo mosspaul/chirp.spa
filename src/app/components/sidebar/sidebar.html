@@ -1,7 +1,54 @@
-<div class="sidebar">
-    <div><a routerLink="/dashboard">Dashboard</a></div>
-    <div><a routerLink="/dashboard">Dashboard</a></div>
-    <div><a routerLink="/dashboard">Dashboard</a></div>
-    <div><a routerLink="/dashboard">Dashboard</a></div>
-    <div><a routerLink="/dashboard">Dashboard</a></div>
-</div>
+<nav class="sidebar">
+  <div class="sidebar-top">
+    <div class="brand">
+      <span class="brand-icon">
+        <lucide-icon [img]="icons.Layers" [size]="18" />
+      </span>
+      <span class="brand-name">Chirp</span>
+    </div>
+
+    <ul class="nav-links">
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
+          <span class="nav-icon"><lucide-icon [img]="icons.LayoutDashboard" [size]="18" /></span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/transactions" routerLinkActive="active" class="nav-item">
+          <span class="nav-icon"><lucide-icon [img]="icons.ArrowLeftRight" [size]="18" /></span>
+          <span class="nav-label">Transactions</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/accounts" routerLinkActive="active" class="nav-item">
+          <span class="nav-icon"><lucide-icon [img]="icons.Wallet" [size]="18" /></span>
+          <span class="nav-label">Accounts</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/analytics" routerLinkActive="active" class="nav-item">
+          <span class="nav-icon"><lucide-icon [img]="icons.PieChart" [size]="18" /></span>
+          <span class="nav-label">Analytics</span>
+        </a>
+      </li>
+      <!-- <li>
+        <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
+          <span class="nav-icon"><lucide-icon [img]="icons.Bell" [size]="18" /></span>
+          <span class="nav-label">Alerts</span>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+
+  <div class="sidebar-bottom">
+    <a routerLink="/settings" routerLinkActive="active" class="nav-item">
+      <span class="nav-icon"><lucide-icon [img]="icons.Settings" [size]="18" /></span>
+      <span class="nav-label">Settings</span>
+    </a>
+    <a routerLink="/profile" class="nav-item profile-item">
+      <span class="nav-icon avatar">JD</span>
+      <span class="nav-label">John Doe</span>
+    </a>
+  </div>
+</nav>
