@@ -15,10 +15,10 @@ export class SignUp {
   credentials: SignUpDto = {
     username: '',
     email: '',
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     password: '',
-    simple_fin_token: ''
+    simpleFinToken: ''
   }
   showPassword: boolean = false;
   userService = inject(UserService)

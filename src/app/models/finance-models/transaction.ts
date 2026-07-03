@@ -5,5 +5,5 @@ export interface Transaction {
     description: string,
     memo: string,
     payee: string,
-    transacted_at: Date
+    transactedAt: Date
 }

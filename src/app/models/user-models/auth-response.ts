@@ -1,6 +1,6 @@
 import { ProfileDto } from "./profile-dto";
 
-export interface SignUpResponse {
+export interface AuthResponse {
     profileDto: ProfileDto,
     token: string
 }

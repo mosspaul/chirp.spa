@@ -2,8 +2,8 @@ export interface SignUpDto {
 
     username: string,
     email: string,
-    first_name: string,
-    last_name: string,
+    firstName: string,
+    lastName: string,
     password: string,
-    simple_fin_token: string
+    simpleFinToken: string
 }

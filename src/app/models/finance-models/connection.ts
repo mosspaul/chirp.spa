@@ -2,7 +2,7 @@ import { Account } from "./account";
 
 export interface Connection {
     id: Number,
-    user_id: string,
+    userId: string,
     name: string,
     url: string,
     accounts: Account[]

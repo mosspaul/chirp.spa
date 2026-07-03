@@ -8,6 +8,6 @@ export interface Account {
     name: string,
     transactions: Transaction[],
     holdings: Holding[],
-    avaliable_balance: Number,
-    balance_date: Date
+    avaliableBalance: Number,
+    balanceDate: Date
 }
