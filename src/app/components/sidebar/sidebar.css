@@ -1,10 +1,9 @@
-/* ── Sidebar Shell ─────────────────────────────────────────── */
 .sidebar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  width: 64px;
+  width: 72px;
   padding: 1.25rem 0.75rem;
   background: #0f1117;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
@@ -19,7 +18,6 @@
   width: 220px;
 }
 
-/* ── Brand ─────────────────────────────────────────────────── */
 .brand {
   display: flex;
   align-items: center;
@@ -62,7 +60,6 @@
   transform: translateX(0);
 }
 
-/* ── Nav List ──────────────────────────────────────────────── */
 .nav-links {
   list-style: none;
   margin: 0;
@@ -72,7 +69,6 @@
   gap: 0.25rem;
 }
 
-/* ── Nav Item ──────────────────────────────────────────────── */
 .nav-item {
   display: flex;
   align-items: center;
@@ -105,7 +101,6 @@
   border-radius: 0 3px 3px 0;
 }
 
-/* ── Icon ──────────────────────────────────────────────────── */
 .nav-icon {
   display: flex;
   align-items: center;
@@ -121,7 +116,6 @@
   stroke-width: 1.75;
 }
 
-/* ── Label ─────────────────────────────────────────────────── */
 .nav-label {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.875rem;
@@ -137,7 +131,7 @@
   transform: translateX(0);
 }
 
-/* ── Bottom Section ────────────────────────────────────────── */
+
 .sidebar-bottom {
   display: flex;
   flex-direction: column;
@@ -146,7 +140,6 @@
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* ── Avatar ────────────────────────────────────────────────── */
 .avatar {
   background: linear-gradient(135deg, #0ea5e9, #6366f1);
   border-radius: 50%;

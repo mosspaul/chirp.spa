@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideAngularModule, LayoutDashboard, ArrowLeftRight, Wallet, PieChart, Bell, Settings, Layers } from 'lucide-angular';
+import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,6 +10,7 @@ import { LucideAngularModule, LayoutDashboard, ArrowLeftRight, Wallet, PieChart,
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
+  protected userService = inject(UserService);
   readonly icons = {
     LayoutDashboard,
     ArrowLeftRight,
@@ -18,4 +20,9 @@ export class Sidebar {
     Settings,
     Layers,
   };
+
+  readonly name = computed(() => {
+    const profile = this.userService.userProfile();
+    return `${profile?.firstName ?? ''} ${profile?.lastName ?? ''}`.trim();
+  });
 }
