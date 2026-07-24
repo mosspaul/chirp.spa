@@ -1,39 +1,91 @@
 <div class="page">
-    <div class="title">
+    <div class="page-header">
         <h2>Transactions</h2>
-        <div>
-            <select (change)="filterBy($event)">
-                <option selected="true" disabled="disabled">Filter by accounts</option>
-                <option value="0">All Accounts</option>
-                @for (account of accounts(); track account.id) 
-                {
-                    <option [value]="account.id">{{account.name}}</option>
+        <span class="result-count">{{ transactions().length }} transaction{{ transactions().length === 1 ? '' : 's' }}</span>
+    </div>
+
+    <div class="filters">
+        <div class="search-field">
+            <lucide-icon [img]="icons.Search" [size]="16" class="search-icon" />
+            <input
+                type="text"
+                placeholder="Search payee, description, memo..."
+                [ngModel]="searchTerm()"
+                (ngModelChange)="searchTerm.set($event)"
+            />
+            @if (searchTerm()) {
+                <button type="button" class="clear-search" (click)="searchTerm.set('')" aria-label="Clear search">
+                    <lucide-icon [img]="icons.X" [size]="14" />
+                </button>
+            }
+        </div>
+
+        <select [ngModel]="selectedAccountId()" (ngModelChange)="selectedAccountId.set($event)">
+            <option [ngValue]="0">All accounts</option>
+            @for (account of accounts(); track account.id) {
+                <option [ngValue]="account.id">{{ account.name }}</option>
+            }
+        </select>
+
+        <div class="segmented" role="group" aria-label="Transaction type">
+            <button type="button" [class.active]="transactionType() === 'all'" (click)="transactionType.set('all')">All</button>
+            <button type="button" [class.active]="transactionType() === 'income'" (click)="transactionType.set('income')">Income</button>
+            <button type="button" [class.active]="transactionType() === 'expense'" (click)="transactionType.set('expense')">Expenses</button>
+        </div>
+
+        <select [ngModel]="dateRangePreset()" (ngModelChange)="dateRangePreset.set($event)">
+            @for (option of dateRangeOptions; track option.value) {
+                <option [ngValue]="option.value">{{ option.label }}</option>
+            }
+        </select>
+
+        @if (dateRangePreset() === 'custom') {
+            <div class="date-range">
+                <input type="date" [ngModel]="customFrom()" (ngModelChange)="customFrom.set($event)" />
+                <span>to</span>
+                <input type="date" [ngModel]="customTo()" (ngModelChange)="customTo.set($event)" />
+            </div>
+        }
+
+        <div class="sort-field">
+            <lucide-icon [img]="icons.ArrowUpDown" [size]="14" class="sort-icon" />
+            <select [ngModel]="sortOrder()" (ngModelChange)="sortOrder.set($event)">
+                @for (option of sortOptions; track option.value) {
+                    <option [ngValue]="option.value">{{ option.label }}</option>
                 }
             </select>
         </div>
+
+        @if (activeFilterCount() > 0) {
+            <button type="button" class="clear-all" (click)="clearFilters()">
+                Clear filters ({{ activeFilterCount() }})
+            </button>
+        }
     </div>
+
     <div class="main">
-        @for (transaction of transactions(); track transaction.id) 
-        {
-            <div class="calendar">
-                <div class="date">
-                     <div class="line"></div>
-                    <div class="box">
-                        <div class="header">{{ transaction.transactedAt.monthShort}}</div>
-                        <div class="date"> {{transaction.transactedAt.datePadded }} </div>
-                    </div>
-                    <div class="line"></div>
+        @for (transaction of transactions(); track transaction.id) {
+            <div class="row">
+                <div class="date-badge">
+                    <div class="month">{{ transaction.transactedAt.monthShort }}</div>
+                    <div class="day">{{ transaction.transactedAt.datePadded }}</div>
                 </div>
-                <div class="content">
-                    <div class="horizon"></div>
-                    <div class="card">
-                        <h2>{{ transaction.payee }}</h2>
-                        <h4> {{ transaction.description }} </h4>
-                        <div [ngClass]="transaction.amount > 0 ? 'positive' : 'negative'">
-                            {{ formatter.format(transaction.amount) }}
-                        </div>
+                <div class="card">
+                    <div class="card-main">
+                        <h3>{{ transaction.payee }}</h3>
+                        <p>{{ transaction.description }}</p>
+                    </div>
+                    <div class="amount" [ngClass]="transaction.amount > 0 ? 'positive' : 'negative'">
+                        {{ formatter.format(transaction.amount) }}
                     </div>
                 </div>
+            </div>
+        } @empty {
+            <div class="empty-state">
+                <p>No transactions match your filters.</p>
+                @if (activeFilterCount() > 0) {
+                    <button type="button" (click)="clearFilters()">Clear filters</button>
+                }
             </div>
         }
     </div>
