@@ -21,8 +21,8 @@ export class Sidebar {
     Layers,
   };
 
-  readonly name = computed(() => {
+  readonly username = computed(() => {
     const profile = this.userService.userProfile();
-    return `${profile?.firstName ?? ''} ${profile?.lastName ?? ''}`.trim();
+    return `${profile?.username}`.trim();
   });
 }
